@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
   [SerializeField] InventoryState[] inventorySpriteKeyNames;
   [SerializeField] Sprite[] inventorySprites;
 
+  int isEngagingHash = Animator.StringToHash("isEngaging");
+  Animator animator;
   Actionable inFrontOf = null;
   Inventory inventory = new Inventory();
   Drink drink;
@@ -37,6 +39,7 @@ public class Player : MonoBehaviour
     wandImage.color = Color.black;
     drinkImage.color = Color.black;
     profitText.text = profit.ToString();
+    animator = GetComponent<Animator>();
   }
 
   public Inventory GetInventory()
@@ -52,6 +55,8 @@ public class Player : MonoBehaviour
 
   public void ServeDrink()
   {
+    if (!this.drink) return;
+
     Drink d = this.drink;
     this.drink = null;
     drinkImage.color = Color.black;
@@ -106,6 +111,15 @@ public class Player : MonoBehaviour
     if (Input.GetButtonDown("Jump") && inFrontOf != null)
     {
       inFrontOf.doAction(this);
+    }
+
+    if (Input.GetButton("Jump"))
+    {
+      animator.SetBool(isEngagingHash, true);
+    }
+    else
+    {
+      animator.SetBool(isEngagingHash, false);
     }
   }
 }
