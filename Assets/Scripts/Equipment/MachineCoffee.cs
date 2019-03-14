@@ -36,9 +36,8 @@ public class MachineCoffee : MonoBehaviour, Actionable
 
   private void HandleDone(int duration)
   {
-    if (!this.player) return;
-    Inventory inv = player.GetInventory();
-    inv.RemoveItemFromInventory(State.EMPTY_MUG, State.WAND_FILLED);
+    player.GetInventory().RemoveItemFromInventory(State.EMPTY_MUG, State.WAND_FILLED);
+    player.GetInventory().AddItemToInventory(State.ESPRESSO);
     player.SetDrink(createdDrink);
     player.SetWandState(wandState);
     progressBar.gameObject.SetActive(false);

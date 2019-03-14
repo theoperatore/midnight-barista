@@ -47,8 +47,7 @@ public class Player : MonoBehaviour
   public void SetDrink(Drink createdDrink)
   {
     this.drink = createdDrink;
-    drinkImage.color = Color.white;
-    drinkImage.sprite = sprites[createdDrink.GetInventoryState()];
+    this.SetDrinkState(createdDrink.GetInventoryState());
   }
 
   public void ServeDrink()
@@ -57,6 +56,7 @@ public class Player : MonoBehaviour
     this.drink = null;
     drinkImage.color = Color.black;
     drinkImage.sprite = null;
+    inventory.RemoveItemFromInventory(State.AMERICANO, State.CAPPUCCINO, State.ESPRESSO);
     this.AddProfit(d.GetCost());
   }
 
