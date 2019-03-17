@@ -15,9 +15,9 @@ public class Player : MonoBehaviour
   int isEngagingHash = Animator.StringToHash("isEngaging");
   Animator animator;
   Actionable inFrontOf = null;
-  Inventory inventory = new Inventory();
   Drink drink;
   Dictionary<InventoryState, Sprite> sprites = new Dictionary<InventoryState, Sprite>();
+  Inventory inventory;
 
   private void Awake()
   {
@@ -40,6 +40,7 @@ public class Player : MonoBehaviour
     drinkImage.color = Color.black;
     profitText.text = profit.ToString();
     animator = GetComponent<Animator>();
+    inventory = GetComponent<Inventory>();
   }
 
   public void SetDrink(Drink createdDrink)
