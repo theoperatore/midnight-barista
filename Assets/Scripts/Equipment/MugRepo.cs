@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MugRepo : MonoBehaviour, Actionable
+public class MugRepo : MonoBehaviour, Interactable
 {
 
   [SerializeField] GameEvent mugTakenEvent;
 
-  public void doAction(Player player)
+  public void OnInteraction(Player player)
   {
     if (player.CanTakeMug())
     {

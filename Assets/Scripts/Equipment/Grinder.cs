@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Grinder : MonoBehaviour, Actionable
+public class Grinder : MonoBehaviour, Interactable
 {
 
   [SerializeField] int buttonHoldDuration = 100;
@@ -19,7 +19,7 @@ public class Grinder : MonoBehaviour, Actionable
   }
 
   // called from the player script via Actionable interface
-  public void doAction(Player player)
+  public void OnInteraction(Player player)
   {
     if (player.CanGrindCoffee())
     {

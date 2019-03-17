@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MachineWater : MonoBehaviour, Actionable
+public class MachineWater : MonoBehaviour, Interactable
 {
   [SerializeField] int holdDuration = 25;
   [SerializeField] Slider progress;
@@ -18,7 +18,7 @@ public class MachineWater : MonoBehaviour, Actionable
     progress.gameObject.SetActive(false);
   }
 
-  public void doAction(Player player)
+  public void OnInteraction(Player player)
   {
     if (player.CanMakeAmericano())
     {

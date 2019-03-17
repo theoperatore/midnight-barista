@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
 
   int isEngagingHash = Animator.StringToHash("isEngaging");
   Animator animator;
-  Actionable inFrontOf = null;
+  Interactable inFrontOf = null;
   Drink drink;
   Dictionary<InventoryState, Sprite> sprites = new Dictionary<InventoryState, Sprite>();
   Inventory inventory;
@@ -86,12 +86,12 @@ public class Player : MonoBehaviour
 
   private void OnTriggerEnter2D(Collider2D other)
   {
-    inFrontOf = other.gameObject.GetComponent<Actionable>();
+    inFrontOf = other.gameObject.GetComponent<Interactable>();
   }
 
   private void OnTriggerExit2D(Collider2D other)
   {
-    if (inFrontOf == other.gameObject.GetComponent<Actionable>())
+    if (inFrontOf == other.gameObject.GetComponent<Interactable>())
     {
       inFrontOf = null;
     };
@@ -101,7 +101,7 @@ public class Player : MonoBehaviour
   {
     if (Input.GetButtonDown("Jump") && inFrontOf != null)
     {
-      inFrontOf.doAction(this);
+      inFrontOf.OnInteraction(this);
     }
 
     if (Input.GetButton("Jump"))

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MachineCoffee : MonoBehaviour, Actionable
+public class MachineCoffee : MonoBehaviour, Interactable
 {
 
   [SerializeField] int buttonHoldDuration = 100;
@@ -19,7 +19,7 @@ public class MachineCoffee : MonoBehaviour, Actionable
     progressBar.gameObject.SetActive(false);
   }
 
-  public void doAction(Player player)
+  public void OnInteraction(Player player)
   {
     if (player.CanMakeEspresso())
     {

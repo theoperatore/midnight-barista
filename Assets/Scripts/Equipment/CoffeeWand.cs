@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CoffeeWand : MonoBehaviour, Actionable
+public class CoffeeWand : MonoBehaviour, Interactable
 {
   [SerializeField] GameEvent emitsEvent;
 
-  public void doAction(Player player)
+  public void OnInteraction(Player player)
   {
     emitsEvent.Raise();
     gameObject.SetActive(false);

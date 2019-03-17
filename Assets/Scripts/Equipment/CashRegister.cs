@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CashRegister : MonoBehaviour, Actionable
+public class CashRegister : MonoBehaviour, Interactable
 {
   // Start is called before the first frame update
   void Start()
@@ -16,7 +16,7 @@ public class CashRegister : MonoBehaviour, Actionable
 
   }
 
-  public void doAction(Player player)
+  public void OnInteraction(Player player)
   {
     print("CashRegisterDoing action");
   }
