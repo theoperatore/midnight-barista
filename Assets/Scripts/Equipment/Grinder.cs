@@ -8,10 +8,9 @@ public class Grinder : MonoBehaviour, Actionable
 
   [SerializeField] int buttonHoldDuration = 100;
   [SerializeField] Slider progressBar;
-  [SerializeField] InventoryState givesState;
+  [SerializeField] GameEvent emitsEvent;
 
   HoldAction holdAction;
-  Player player;
 
   private void Start()
   {
@@ -22,10 +21,8 @@ public class Grinder : MonoBehaviour, Actionable
   // called from the player script via Actionable interface
   public void doAction(Player player)
   {
-    Inventory inv = player.GetInventory();
-    if (inv.HasItem(State.WAND_EMPTY) && !inv.HasItem(State.WAND_FILLED))
+    if (player.CanGrindCoffee())
     {
-      this.player = player;
       progressBar.gameObject.SetActive(true);
       holdAction.StartAction(HandleDone, HandleCancel, HandleProgress, buttonHoldDuration);
     }
@@ -33,10 +30,8 @@ public class Grinder : MonoBehaviour, Actionable
 
   private void HandleDone(int durationHeld)
   {
-    if (!this.player) return;
     progressBar.gameObject.SetActive(false);
-    player.GetInventory().AddItemToInventory(State.WAND_FILLED);
-    player.SetWandState(givesState);
+    emitsEvent.Raise();
   }
 
   private void HandleCancel(int durationHeld)

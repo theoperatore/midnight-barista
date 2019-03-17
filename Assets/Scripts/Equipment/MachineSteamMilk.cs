@@ -6,10 +6,9 @@ using UnityEngine.UI;
 public class MachineSteamMilk : MonoBehaviour, Actionable
 {
   [SerializeField] int holdDuration = 100;
-  [SerializeField] Drink cappuccino;
+  [SerializeField] GameEvent raisesEvent;
   [SerializeField] Slider progress;
 
-  Player player;
   HoldAction action;
 
   private void Start()
@@ -20,10 +19,7 @@ public class MachineSteamMilk : MonoBehaviour, Actionable
 
   public void doAction(Player player)
   {
-    this.player = player;
-    Inventory inv = player.GetInventory();
-
-    if (inv.HasItems(State.ESPRESSO))
+    if (player.CanMakeCappuccino())
     {
       progress.gameObject.SetActive(true);
       action.StartAction(HandleDone, HandleCancel, handleProgress, holdDuration);
@@ -32,9 +28,7 @@ public class MachineSteamMilk : MonoBehaviour, Actionable
 
   public void HandleDone(int durationHeld)
   {
-    player.GetInventory().RemoveItemFromInventory(State.ESPRESSO);
-    player.GetInventory().AddItemToInventory(State.CAPPUCCINO);
-    player.SetDrink(cappuccino);
+    raisesEvent.Raise();
     progress.gameObject.SetActive(false);
 
   }

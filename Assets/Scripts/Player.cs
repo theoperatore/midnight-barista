@@ -42,11 +42,6 @@ public class Player : MonoBehaviour
     animator = GetComponent<Animator>();
   }
 
-  public Inventory GetInventory()
-  {
-    return inventory;
-  }
-
   public void SetDrink(Drink createdDrink)
   {
     this.drink = createdDrink;
@@ -61,7 +56,7 @@ public class Player : MonoBehaviour
     this.drink = null;
     drinkImage.color = Color.black;
     drinkImage.sprite = null;
-    inventory.RemoveItemFromInventory(State.AMERICANO, State.CAPPUCCINO, State.ESPRESSO);
+    inventory.RemoveItems(State.AMERICANO, State.CAPPUCCINO, State.ESPRESSO);
     this.AddProfit(d.GetCost());
   }
 
@@ -86,11 +81,6 @@ public class Player : MonoBehaviour
   {
     profit += amount;
     profitText.text = profit.ToString();
-  }
-
-  public int GetProfit()
-  {
-    return profit;
   }
 
   private void OnTriggerEnter2D(Collider2D other)
@@ -122,4 +112,72 @@ public class Player : MonoBehaviour
       animator.SetBool(isEngagingHash, false);
     }
   }
+
+  // conditional checks
+  public bool CanTakeMug()
+  {
+    return !inventory.HasItems(State.EMPTY_MUG) && !drink;
+  }
+
+  public bool CanGrindCoffee()
+  {
+    return inventory.HasItems(State.WAND_EMPTY);
+  }
+
+  public bool CanMakeEspresso()
+  {
+    return inventory.HasItems(State.WAND_FILLED, State.EMPTY_MUG);
+  }
+
+  public bool CanMakeAmericano()
+  {
+    return inventory.HasItems(State.ESPRESSO);
+  }
+
+  public bool CanMakeCappuccino()
+  {
+    return inventory.HasItems(State.ESPRESSO);
+  }
+
+  // event handlers
+  public void HandleCoffeeWandTake(InventoryState wand)
+  {
+    this.SetWandState(wand);
+    inventory.AddItems(State.WAND_EMPTY);
+  }
+
+  public void HandleCoffeeGround(InventoryState filledWand)
+  {
+    this.SetWandState(filledWand);
+    inventory.RemoveItems(State.WAND_EMPTY);
+    inventory.AddItems(State.WAND_FILLED);
+  }
+
+  public void HandleMugTaken(InventoryState emptyMug)
+  {
+    this.SetDrinkState(emptyMug);
+    inventory.AddItems(State.EMPTY_MUG);
+  }
+
+  public void HandleEspressoCreated(InventoryState espresso)
+  {
+    this.SetDrinkState(espresso);
+    inventory.RemoveItems(State.EMPTY_MUG, State.WAND_FILLED);
+    inventory.AddItems(State.WAND_EMPTY, State.ESPRESSO);
+  }
+
+  public void HandleAmericanoCreated(InventoryState americano)
+  {
+    this.SetDrinkState(americano);
+    inventory.AddItems(State.AMERICANO);
+    inventory.RemoveItems(State.CAPPUCCINO, State.ESPRESSO);
+  }
+
+  public void HandleCappuccinoCreated(InventoryState cappuccino)
+  {
+    this.SetDrinkState(cappuccino);
+    inventory.AddItems(State.CAPPUCCINO);
+    inventory.RemoveItems(State.AMERICANO, State.ESPRESSO);
+  }
+
 }

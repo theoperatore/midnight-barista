@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class ServeCounter : MonoBehaviour, Actionable
 {
+  [SerializeField] GameEvent raisesEvent;
+
   public void doAction(Player player)
   {
-    player.ServeDrink();
+    raisesEvent.Raise();
   }
 }

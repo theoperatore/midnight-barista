@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class CoffeeWand : MonoBehaviour, Actionable
 {
-  [SerializeField] InventoryState givesState;
+  [SerializeField] GameEvent emitsEvent;
 
   public void doAction(Player player)
   {
-    player.GetInventory().AddItemToInventory(State.WAND_EMPTY);
-    player.SetWandState(givesState);
+    emitsEvent.Raise();
     gameObject.SetActive(false);
   }
 }

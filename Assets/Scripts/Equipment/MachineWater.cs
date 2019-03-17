@@ -6,10 +6,9 @@ using UnityEngine.UI;
 public class MachineWater : MonoBehaviour, Actionable
 {
   [SerializeField] int holdDuration = 25;
-  [SerializeField] Drink americano;
   [SerializeField] Slider progress;
+  [SerializeField] GameEvent raisesEvent;
 
-  Player player;
   HoldAction action;
 
   // Start is called before the first frame update
@@ -21,8 +20,7 @@ public class MachineWater : MonoBehaviour, Actionable
 
   public void doAction(Player player)
   {
-    this.player = player;
-    if (player.GetInventory().HasItem(State.ESPRESSO))
+    if (player.CanMakeAmericano())
     {
       progress.gameObject.SetActive(true);
       action.StartAction(HandleDone, HandleCancel, HandleProgress, holdDuration);
@@ -31,10 +29,8 @@ public class MachineWater : MonoBehaviour, Actionable
 
   void HandleDone(int duration)
   {
-    player.GetInventory().RemoveItemFromInventory(State.ESPRESSO);
-    player.GetInventory().AddItemToInventory(State.AMERICANO);
-    player.SetDrink(americano);
     progress.gameObject.SetActive(false);
+    raisesEvent.Raise();
   }
 
   void HandleCancel(int duration)

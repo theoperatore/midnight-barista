@@ -12,12 +12,15 @@ public class Inventory
     inventory = new Dictionary<State, bool>();
   }
 
-  public void AddItemToInventory(State state)
+  public void AddItems(params State[] state)
   {
-    inventory.Add(state, true);
+    foreach (var s in state)
+    {
+      inventory.Add(s, true);
+    }
   }
 
-  public bool RemoveItemFromInventory(params State[] state)
+  public bool RemoveItems(params State[] state)
   {
     foreach (var s in state)
     {

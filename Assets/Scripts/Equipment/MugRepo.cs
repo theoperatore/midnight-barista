@@ -5,15 +5,13 @@ using UnityEngine;
 public class MugRepo : MonoBehaviour, Actionable
 {
 
-  [SerializeField] InventoryState emptyMug;
+  [SerializeField] GameEvent mugTakenEvent;
 
   public void doAction(Player player)
   {
-    Inventory inv = player.GetInventory();
-    if (!inv.HasItem(State.EMPTY_MUG) && !player.IsHoldingDrink())
+    if (player.CanTakeMug())
     {
-      inv.AddItemToInventory(State.EMPTY_MUG);
-      player.SetDrinkState(emptyMug);
+      mugTakenEvent.Raise();
     }
   }
 }

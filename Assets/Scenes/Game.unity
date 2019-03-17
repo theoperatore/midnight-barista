@@ -454,7 +454,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4fa69aa3ffb34d498ecfcf113342d25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  givesState: {fileID: 11400000, guid: 38a91b19dc1fa4a268de848415dc509e, type: 2}
+  emitsEvent: {fileID: 11400000, guid: 7b7ed0e80277b44afb46eddcb47058ba, type: 2}
 --- !u!1 &614319930
 GameObject:
   m_ObjectHideFlags: 0
@@ -577,8 +577,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdDuration: 25
-  americano: {fileID: 11400000, guid: c550ab596dc3644ab9e4d85c4e02da02, type: 2}
   progress: {fileID: 1265179636}
+  raisesEvent: {fileID: 11400000, guid: fd53336cf8b6e4e6980e3c3ef968de0d, type: 2}
 --- !u!114 &614319935
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -782,6 +782,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1752b5ca5cd1b474eab29466eb522742, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  raisesEvent: {fileID: 11400000, guid: b792a5a9b6fcb48b291449b0aaf2ab06, type: 2}
 --- !u!1 &989934022
 GameObject:
   m_ObjectHideFlags: 0
@@ -1006,8 +1007,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonHoldDuration: 200
   progressBar: {fileID: 413981536}
-  createdDrink: {fileID: 11400000, guid: a8045f7083c034e379be4d5d07a3b4ef, type: 2}
-  wandState: {fileID: 11400000, guid: 38a91b19dc1fa4a268de848415dc509e, type: 2}
+  raisesEvent: {fileID: 11400000, guid: 31f44bd6c6357403b8051852a99b156c, type: 2}
 --- !u!114 &1070609989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2360,7 +2360,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdDuration: 325
-  cappuccino: {fileID: 11400000, guid: 522604ed88a1241068515a1edcb03c0b, type: 2}
+  raisesEvent: {fileID: 11400000, guid: 56a56203d22cf46e6aec59c264b8515a, type: 2}
   progress: {fileID: 1918406424}
 --- !u!114 &1572287181
 MonoBehaviour:
@@ -2439,6 +2439,13 @@ GameObject:
   - component: {fileID: 1727608077}
   - component: {fileID: 1727608080}
   - component: {fileID: 1727608081}
+  - component: {fileID: 1727608075}
+  - component: {fileID: 1727608082}
+  - component: {fileID: 1727608083}
+  - component: {fileID: 1727608084}
+  - component: {fileID: 1727608086}
+  - component: {fileID: 1727608085}
+  - component: {fileID: 1727608087}
   m_Layer: 10
   m_Name: Player
   m_TagString: Untagged
@@ -2446,6 +2453,36 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1727608075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727608074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93685f13c44a944dc87bd861c11f9c97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventToListen: {fileID: 11400000, guid: 07682aa84f1dd422cb49a58f4a71e464, type: 2}
+  onEventRaised:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1727608080}
+        m_MethodName: HandleMugTaken
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 389234181bd2a431cb5b6049d294e4bb,
+            type: 2}
+          m_ObjectArgumentAssemblyTypeName: InventoryState, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!4 &1727608076
 Transform:
   m_ObjectHideFlags: 0
@@ -2573,6 +2610,233 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1727608082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727608074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93685f13c44a944dc87bd861c11f9c97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventToListen: {fileID: 11400000, guid: 7b7ed0e80277b44afb46eddcb47058ba, type: 2}
+  onEventRaised:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1727608080}
+        m_MethodName: HandleCoffeeWandTake
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 38a91b19dc1fa4a268de848415dc509e,
+            type: 2}
+          m_ObjectArgumentAssemblyTypeName: InventoryState, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &1727608083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727608074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93685f13c44a944dc87bd861c11f9c97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventToListen: {fileID: 11400000, guid: 26ea4e1f4cce740f5aacb54d9487d33d, type: 2}
+  onEventRaised:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1727608080}
+        m_MethodName: HandleCoffeeGround
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: a1bbe03d3d0a749f5bc2c6c831a891ba,
+            type: 2}
+          m_ObjectArgumentAssemblyTypeName: InventoryState, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &1727608084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727608074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93685f13c44a944dc87bd861c11f9c97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventToListen: {fileID: 11400000, guid: 31f44bd6c6357403b8051852a99b156c, type: 2}
+  onEventRaised:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1727608080}
+        m_MethodName: HandleEspressoCreated
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 6a27f02a5f83442d784ec94b6bc1fb7b,
+            type: 2}
+          m_ObjectArgumentAssemblyTypeName: InventoryState, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1727608080}
+        m_MethodName: SetDrink
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: a8045f7083c034e379be4d5d07a3b4ef,
+            type: 2}
+          m_ObjectArgumentAssemblyTypeName: Drink, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1727608080}
+        m_MethodName: SetWandState
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 38a91b19dc1fa4a268de848415dc509e,
+            type: 2}
+          m_ObjectArgumentAssemblyTypeName: InventoryState, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &1727608085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727608074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93685f13c44a944dc87bd861c11f9c97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventToListen: {fileID: 11400000, guid: 56a56203d22cf46e6aec59c264b8515a, type: 2}
+  onEventRaised:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1727608080}
+        m_MethodName: HandleCappuccinoCreated
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: f58ded4a215b942438c614bdcea90df5,
+            type: 2}
+          m_ObjectArgumentAssemblyTypeName: InventoryState, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1727608080}
+        m_MethodName: SetDrink
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 522604ed88a1241068515a1edcb03c0b,
+            type: 2}
+          m_ObjectArgumentAssemblyTypeName: Drink, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &1727608086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727608074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93685f13c44a944dc87bd861c11f9c97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventToListen: {fileID: 11400000, guid: fd53336cf8b6e4e6980e3c3ef968de0d, type: 2}
+  onEventRaised:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1727608080}
+        m_MethodName: HandleAmericanoCreated
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: cff8607efe1504f7a9105175d4421dbe,
+            type: 2}
+          m_ObjectArgumentAssemblyTypeName: InventoryState, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1727608080}
+        m_MethodName: SetDrink
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: c550ab596dc3644ab9e4d85c4e02da02,
+            type: 2}
+          m_ObjectArgumentAssemblyTypeName: Drink, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &1727608087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727608074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93685f13c44a944dc87bd861c11f9c97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventToListen: {fileID: 11400000, guid: b792a5a9b6fcb48b291449b0aaf2ab06, type: 2}
+  onEventRaised:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1727608080}
+        m_MethodName: ServeDrink
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &1764225986
 GameObject:
   m_ObjectHideFlags: 0
@@ -2964,7 +3228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c077b34dc57d947c6bd060ab78e4be7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  emptyMug: {fileID: 11400000, guid: 389234181bd2a431cb5b6049d294e4bb, type: 2}
+  mugTakenEvent: {fileID: 11400000, guid: 07682aa84f1dd422cb49a58f4a71e464, type: 2}
 --- !u!1 &1887169874
 GameObject:
   m_ObjectHideFlags: 0
@@ -3380,7 +3644,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonHoldDuration: 100
   progressBar: {fileID: 1518758620}
-  givesState: {fileID: 11400000, guid: a1bbe03d3d0a749f5bc2c6c831a891ba, type: 2}
+  emitsEvent: {fileID: 11400000, guid: 26ea4e1f4cce740f5aacb54d9487d33d, type: 2}
 --- !u!114 &1969483951
 MonoBehaviour:
   m_ObjectHideFlags: 0

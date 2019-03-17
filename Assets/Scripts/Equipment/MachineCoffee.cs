@@ -8,11 +8,9 @@ public class MachineCoffee : MonoBehaviour, Actionable
 
   [SerializeField] int buttonHoldDuration = 100;
   [SerializeField] Slider progressBar;
-  [SerializeField] Drink createdDrink;
-  [SerializeField] InventoryState wandState;
+  [SerializeField] GameEvent raisesEvent;
 
   HoldAction holdAction;
-  Player player;
 
   // Start is called before the first frame update
   void Start()
@@ -23,12 +21,8 @@ public class MachineCoffee : MonoBehaviour, Actionable
 
   public void doAction(Player player)
   {
-    Inventory inv = player.GetInventory();
-
-    if (player.IsHoldingDrink()) return;
-    if (inv.HasItems(State.WAND_FILLED, State.EMPTY_MUG))
+    if (player.CanMakeEspresso())
     {
-      this.player = player;
       progressBar.gameObject.SetActive(true);
       holdAction.StartAction(HandleDone, HandleCancel, HandleProgress, buttonHoldDuration);
     }
@@ -36,10 +30,7 @@ public class MachineCoffee : MonoBehaviour, Actionable
 
   private void HandleDone(int duration)
   {
-    player.GetInventory().RemoveItemFromInventory(State.EMPTY_MUG, State.WAND_FILLED);
-    player.GetInventory().AddItemToInventory(State.ESPRESSO);
-    player.SetDrink(createdDrink);
-    player.SetWandState(wandState);
+    raisesEvent.Raise();
     progressBar.gameObject.SetActive(false);
   }
 
