@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class Movement : MonoBehaviour
 {
 
   [SerializeField] int minx = -2;
@@ -40,28 +40,28 @@ public class PlayerMovement : MonoBehaviour
     {
       isLeftPressed = true;
       if (transform.position.x - 1 < minx) return;
-      transform.position += new Vector3(-1, 0, 0);
+      transform.position += Vector3.left;
     }
 
     if (Input.GetAxisRaw("Horizontal") == 1 && !isRightPressed)
     {
       isRightPressed = true;
       if (transform.position.x + 1 > maxx) return;
-      transform.position += new Vector3(1, 0, 0);
+      transform.position += Vector3.right;
     }
 
     if (Input.GetAxisRaw("Vertical") == -1 && !isDownPressed)
     {
       isDownPressed = true;
       if (transform.position.y - 1 < miny) return;
-      transform.position += new Vector3(0, -1, 0);
+      transform.position += Vector3.down;
     }
 
     if (Input.GetAxisRaw("Vertical") == 1 && !isUpPressed)
     {
       isUpPressed = true;
       if (transform.position.y + 1 > maxy) return;
-      transform.position += new Vector3(0, 1, 0);
+      transform.position += Vector3.up;
     }
   }
 
