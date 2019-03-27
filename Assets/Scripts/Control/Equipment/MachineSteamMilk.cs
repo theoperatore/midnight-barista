@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Midnight.Control;
+using Midnight.Core;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MachineSteamMilk : MonoBehaviour, Interactable
+public class MachineSteamMilk : MonoBehaviour, IInteractable
 {
   [SerializeField] int holdDuration = 100;
   [SerializeField] GameEvent raisesEvent;
@@ -17,7 +19,7 @@ public class MachineSteamMilk : MonoBehaviour, Interactable
     action = GetComponent<HoldAction>();
   }
 
-  public void OnInteraction(Player player)
+  public void OnInteraction(PlayerController player)
   {
     if (player.CanMakeCappuccino())
     {

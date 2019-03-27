@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Midnight.Control;
 using UnityEngine;
 
-public class ServeCounter : MonoBehaviour, Interactable
+public class ServeCounter : MonoBehaviour, IInteractable
 {
   [SerializeField] GameEvent raisesEvent;
 
-  public void OnInteraction(Player player)
+  public void OnInteraction(PlayerController player)
   {
     raisesEvent.Raise();
   }

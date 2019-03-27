@@ -1,9 +1,11 @@
 using System;
 using System.Collections;
+using Midnight.Control;
+using Midnight.Core;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Grinder : MonoBehaviour, Interactable
+public class Grinder : MonoBehaviour, IInteractable
 {
 
   [SerializeField] int buttonHoldDuration = 100;
@@ -19,7 +21,7 @@ public class Grinder : MonoBehaviour, Interactable
   }
 
   // called from the player script via Actionable interface
-  public void OnInteraction(Player player)
+  public void OnInteraction(PlayerController player)
   {
     if (player.CanGrindCoffee())
     {

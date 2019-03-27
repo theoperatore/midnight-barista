@@ -451,10 +451,37 @@ MonoBehaviour:
   m_GameObject: {fileID: 603948493}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4fa69aa3ffb34d498ecfcf113342d25, type: 3}
+  m_Script: {fileID: 11500000, guid: 77e7a095dcf504979a4e907a91112d4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  emitsEvent: {fileID: 11400000, guid: 7b7ed0e80277b44afb46eddcb47058ba, type: 2}
+  onInteraction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5462814630138095795}
+        m_MethodName: HandleCoffeeWandTake
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 38a91b19dc1fa4a268de848415dc509e,
+            type: 2}
+          m_ObjectArgumentAssemblyTypeName: InventoryState, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 603948493}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &614319930
 GameObject:
   m_ObjectHideFlags: 0
@@ -2734,10 +2761,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 1847138468}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c077b34dc57d947c6bd060ab78e4be7c, type: 3}
+  m_Script: {fileID: 11500000, guid: 77e7a095dcf504979a4e907a91112d4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mugTakenEvent: {fileID: 11400000, guid: 07682aa84f1dd422cb49a58f4a71e464, type: 2}
+  onInteraction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5462814630138095795}
+        m_MethodName: HandleMugTaken
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 389234181bd2a431cb5b6049d294e4bb,
+            type: 2}
+          m_ObjectArgumentAssemblyTypeName: InventoryState, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &1887169874
 GameObject:
   m_ObjectHideFlags: 0
@@ -3884,5 +3927,23 @@ PrefabInstance:
       propertyPath: profitText
       value: 
       objectReference: {fileID: 1764225988}
-    m_RemovedComponents: []
+    - target: {fileID: 5462814630138095793, guid: 514d7fe99ae194dba91754e69ea1fd5d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5462814630138095793, guid: 514d7fe99ae194dba91754e69ea1fd5d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 514d7fe99ae194dba91754e69ea1fd5d, type: 3}
+--- !u!114 &5462814630138095795 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5462814630138095795, guid: 514d7fe99ae194dba91754e69ea1fd5d,
+    type: 3}
+  m_PrefabInstance: {fileID: 5462814628436843939}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86887ff2af49f46d8993059845d79aea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
