@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Midnight.Control;
 using Midnight.Core;
+using Midnight.Events;
 using UnityEngine;
 using UnityEngine.UI;
 

@@ -1,9 +1,12 @@
-public enum State
+namespace Midnight.Game
 {
-  WAND_EMPTY,
-  WAND_FILLED,
-  EMPTY_MUG,
-  AMERICANO,
-  ESPRESSO,
-  CAPPUCCINO
+  public enum State
+  {
+    WAND_EMPTY,
+    WAND_FILLED,
+    EMPTY_MUG,
+    AMERICANO,
+    ESPRESSO,
+    CAPPUCCINO
+  }
 }

@@ -3,24 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class GameEventListener : MonoBehaviour
+namespace Midnight.Events
 {
-
-  [SerializeField] GameEvent eventToListen;
-  [SerializeField] UnityEvent onEventRaised;
-
-  private void OnEnable()
+  public class GameEventListener : MonoBehaviour
   {
-    eventToListen.AddEventListener(this);
-  }
 
-  private void OnDisable()
-  {
-    eventToListen.RemoveEventListener(this);
-  }
+    [SerializeField] GameEvent eventToListen;
+    [SerializeField] UnityEvent onEventRaised;
 
-  public void OnEventRaised()
-  {
-    onEventRaised.Invoke();
+    private void OnEnable()
+    {
+      eventToListen.AddEventListener(this);
+    }
+
+    private void OnDisable()
+    {
+      eventToListen.RemoveEventListener(this);
+    }
+
+    public void OnEventRaised()
+    {
+      onEventRaised.Invoke();
+    }
   }
 }

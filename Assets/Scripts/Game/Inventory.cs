@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Midnight.Game;
 using UnityEngine;
 
-namespace Midnight.Core
+namespace Midnight.Game
 {
   public class Inventory : MonoBehaviour
   {
