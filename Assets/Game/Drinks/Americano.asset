@@ -9,7 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cde3a5f041e3e42b2b13949f5a7fb615, type: 3}
-  m_Name: WandFilled
+  m_Script: {fileID: 11500000, guid: 77ac1d26a7eee442b952362af4320713, type: 3}
+  m_Name: Americano
   m_EditorClassIdentifier: 
-  stateName: WAND_FILLED
+  cost: 1
+  drinkName: Americano
+  sprite: {fileID: 21300020, guid: 955f86b67a4e146538240da58d476306, type: 3}

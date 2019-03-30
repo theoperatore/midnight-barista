@@ -5,44 +5,39 @@ using Midnight.Core;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Grinder : MonoBehaviour, IInteractable
+public class Grinder : MonoBehaviour
 {
 
-  [SerializeField] int buttonHoldDuration = 100;
-  [SerializeField] Slider progressBar;
+  [SerializeField] float buttonHoldDuration = 100f;
   [SerializeField] GameEvent emitsEvent;
 
-  HoldAction holdAction;
+  GameAction gameAction;
+  PlayerController player;
 
   private void Start()
   {
-    holdAction = GetComponent<HoldAction>();
-    progressBar.gameObject.SetActive(false);
-  }
-
-  // called from the player script via Actionable interface
-  public void OnInteraction(PlayerController player)
-  {
-    if (player.CanGrindCoffee())
+    gameAction = GetComponent<GameAction>();
+    try
     {
-      progressBar.gameObject.SetActive(true);
-      holdAction.StartAction(HandleDone, HandleCancel, HandleProgress, buttonHoldDuration);
+      player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+    }
+    catch (Exception e)
+    {
+      print(e);
     }
   }
 
-  private void HandleDone(int durationHeld)
+  // invoked by Interactable component
+  public void OnInteraction()
   {
-    progressBar.gameObject.SetActive(false);
+    if (player.CanGrindCoffee())
+    {
+      gameAction.StartAction(() => Input.GetButton("Jump"), buttonHoldDuration);
+    }
+  }
+
+  public void HandleDone(float durationHeld)
+  {
     emitsEvent.Raise();
-  }
-
-  private void HandleCancel(int durationHeld)
-  {
-    progressBar.gameObject.SetActive(false);
-  }
-
-  private void HandleProgress(int durationHeld)
-  {
-    progressBar.value = (float)durationHeld / (float)buttonHoldDuration; ;
   }
 }

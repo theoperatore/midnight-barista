@@ -95,7 +95,6 @@ GameObject:
   - component: {fileID: 5462814630138095794}
   - component: {fileID: 1313645712465212086}
   - component: {fileID: 5462814630138095784}
-  - component: {fileID: 5462814630138095793}
   - component: {fileID: 5462814630138095792}
   - component: {fileID: 5462814630138095799}
   - component: {fileID: 5462814630138095797}
@@ -202,20 +201,6 @@ MonoBehaviour:
   wandImage: {fileID: 0}
   drinkImage: {fileID: 0}
   profitText: {fileID: 0}
-  inventorySpriteKeyNames:
-  - {fileID: 11400000, guid: 38a91b19dc1fa4a268de848415dc509e, type: 2}
-  - {fileID: 11400000, guid: a1bbe03d3d0a749f5bc2c6c831a891ba, type: 2}
-  - {fileID: 11400000, guid: 389234181bd2a431cb5b6049d294e4bb, type: 2}
-  - {fileID: 11400000, guid: cff8607efe1504f7a9105175d4421dbe, type: 2}
-  - {fileID: 11400000, guid: f58ded4a215b942438c614bdcea90df5, type: 2}
-  - {fileID: 11400000, guid: 6a27f02a5f83442d784ec94b6bc1fb7b, type: 2}
-  inventorySprites:
-  - {fileID: 21300028, guid: 955f86b67a4e146538240da58d476306, type: 3}
-  - {fileID: 21300026, guid: 955f86b67a4e146538240da58d476306, type: 3}
-  - {fileID: 21300018, guid: 955f86b67a4e146538240da58d476306, type: 3}
-  - {fileID: 21300020, guid: 955f86b67a4e146538240da58d476306, type: 3}
-  - {fileID: 21300022, guid: 955f86b67a4e146538240da58d476306, type: 3}
-  - {fileID: 21300024, guid: 955f86b67a4e146538240da58d476306, type: 3}
 --- !u!95 &5462814630138095794
 Animator:
   serializedVersion: 3
@@ -267,39 +252,9 @@ MonoBehaviour:
         m_MethodName: HandleMugTaken
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 389234181bd2a431cb5b6049d294e4bb,
+          m_ObjectArgument: {fileID: 11400000, guid: 49222165174c94900a0a6a598a70c45d,
             type: 2}
-          m_ObjectArgumentAssemblyTypeName: InventoryState, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
---- !u!114 &5462814630138095793
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5462814630138095785}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93685f13c44a944dc87bd861c11f9c97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventToListen: {fileID: 11400000, guid: 7b7ed0e80277b44afb46eddcb47058ba, type: 2}
-  onEventRaised:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5462814630138095795}
-        m_MethodName: HandleCoffeeWandTake
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 38a91b19dc1fa4a268de848415dc509e,
-            type: 2}
-          m_ObjectArgumentAssemblyTypeName: InventoryState, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: Midnight.Game.Item, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -327,9 +282,9 @@ MonoBehaviour:
         m_MethodName: HandleCoffeeGround
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: a1bbe03d3d0a749f5bc2c6c831a891ba,
+          m_ObjectArgument: {fileID: 11400000, guid: 92aff62c8a7e1423391a35d946279bef,
             type: 2}
-          m_ObjectArgumentAssemblyTypeName: InventoryState, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: Midnight.Game.Item, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -357,21 +312,9 @@ MonoBehaviour:
         m_MethodName: HandleEspressoCreated
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 6a27f02a5f83442d784ec94b6bc1fb7b,
+          m_ObjectArgument: {fileID: 11400000, guid: 8ff9eed73945e452182823ca559afb69,
             type: 2}
-          m_ObjectArgumentAssemblyTypeName: InventoryState, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 5462814630138095795}
-        m_MethodName: SetDrink
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: a8045f7083c034e379be4d5d07a3b4ef,
-            type: 2}
-          m_ObjectArgumentAssemblyTypeName: Drink, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: Midnight.Game.Drink, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -381,9 +324,9 @@ MonoBehaviour:
         m_MethodName: SetWandState
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 38a91b19dc1fa4a268de848415dc509e,
+          m_ObjectArgument: {fileID: 11400000, guid: b15059de0d7db4ef3b8fc97d26a986b1,
             type: 2}
-          m_ObjectArgumentAssemblyTypeName: InventoryState, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: Midnight.Game.Item, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -411,21 +354,21 @@ MonoBehaviour:
         m_MethodName: HandleAmericanoCreated
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: cff8607efe1504f7a9105175d4421dbe,
+          m_ObjectArgument: {fileID: 11400000, guid: 05f633c1bc5484543bb199a757e68182,
             type: 2}
-          m_ObjectArgumentAssemblyTypeName: InventoryState, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: Midnight.Game.Drink, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 5462814630138095795}
-        m_MethodName: SetDrink
+        m_MethodName: SetWandState
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: c550ab596dc3644ab9e4d85c4e02da02,
+          m_ObjectArgument: {fileID: 11400000, guid: b15059de0d7db4ef3b8fc97d26a986b1,
             type: 2}
-          m_ObjectArgumentAssemblyTypeName: Drink, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: Midnight.Game.Item, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -453,21 +396,21 @@ MonoBehaviour:
         m_MethodName: HandleCappuccinoCreated
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: f58ded4a215b942438c614bdcea90df5,
+          m_ObjectArgument: {fileID: 11400000, guid: 79363470bd80648eaa32599ac856831e,
             type: 2}
-          m_ObjectArgumentAssemblyTypeName: InventoryState, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: Midnight.Game.Drink, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 5462814630138095795}
-        m_MethodName: SetDrink
+        m_MethodName: SetWandState
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 522604ed88a1241068515a1edcb03c0b,
+          m_ObjectArgument: {fileID: 11400000, guid: b15059de0d7db4ef3b8fc97d26a986b1,
             type: 2}
-          m_ObjectArgumentAssemblyTypeName: Drink, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: Midnight.Game.Item, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

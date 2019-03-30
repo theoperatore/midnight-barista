@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Midnight.Core;
+using Midnight.Game;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,31 +13,13 @@ namespace Midnight.Control
     [SerializeField] Image wandImage;
     [SerializeField] Image drinkImage;
     [SerializeField] Text profitText;
-    [SerializeField] InventoryState[] inventorySpriteKeyNames;
-    [SerializeField] Sprite[] inventorySprites;
 
     int isEngagingHash = Animator.StringToHash("isEngaging");
     Animator animator;
     Drink drink;
-    Dictionary<InventoryState, Sprite> sprites = new Dictionary<InventoryState, Sprite>();
     Inventory inventory;
 
-    // FIXME: deprecate IInteractable
-    IInteractable inFrontOf = null;
     Interactable interactable = null;
-
-    private void Awake()
-    {
-      if (inventorySpriteKeyNames.Length != inventorySprites.Length)
-      {
-        throw new System.ArgumentException("Player.cs: Sprite Keys and Sprite values have unequal lengths! They must be equal lengths!");
-      }
-
-      for (int i = 0; i < inventorySpriteKeyNames.Length; i++)
-      {
-        sprites.Add(inventorySpriteKeyNames[i], inventorySprites[i]);
-      }
-    }
 
     private void Start()
     {
@@ -52,7 +35,7 @@ namespace Midnight.Control
     public void SetDrink(Drink createdDrink)
     {
       this.drink = createdDrink;
-      this.SetDrinkState(createdDrink.GetInventoryState());
+      this.SetDrinkState(createdDrink.GetSprite());
     }
 
     public void ServeDrink()
@@ -72,16 +55,21 @@ namespace Midnight.Control
       return this.drink != null;
     }
 
-    public void SetWandState(InventoryState state)
+    public void SetWandState(Item wand)
     {
-      wandImage.color = Color.white;
-      wandImage.sprite = sprites[state];
+      SetWandState(wand.GetSprite());
     }
 
-    public void SetDrinkState(InventoryState state)
+    private void SetWandState(Sprite sprite)
+    {
+      wandImage.color = Color.white;
+      wandImage.sprite = sprite;
+    }
+
+    private void SetDrinkState(Sprite sprite)
     {
       drinkImage.color = Color.white;
-      drinkImage.sprite = sprites[state];
+      drinkImage.sprite = sprite;
     }
 
     public void AddProfit(int amount)
@@ -92,17 +80,11 @@ namespace Midnight.Control
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-      inFrontOf = other.gameObject.GetComponent<IInteractable>();
       interactable = other.gameObject.GetComponent<Interactable>();
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-      if (inFrontOf == other.gameObject.GetComponent<IInteractable>())
-      {
-        inFrontOf = null;
-      };
-
       if (interactable == other.gameObject.GetComponent<Interactable>())
       {
         interactable = null;
@@ -111,11 +93,6 @@ namespace Midnight.Control
 
     private void Update()
     {
-      if (Input.GetButtonDown("Jump") && inFrontOf != null)
-      {
-        inFrontOf.OnInteraction(this);
-      }
-
       if (Input.GetButtonDown("Jump") && interactable != null)
       {
         interactable.RaiseInteraction();
@@ -158,43 +135,43 @@ namespace Midnight.Control
     }
 
     // event handlers
-    public void HandleCoffeeWandTake(InventoryState wand)
+    public void HandleCoffeeWandTake(Item wand)
     {
-      this.SetWandState(wand);
+      this.SetWandState(wand.GetSprite());
       inventory.AddItems(State.WAND_EMPTY);
     }
 
-    public void HandleCoffeeGround(InventoryState filledWand)
+    public void HandleCoffeeGround(Item filledWand)
     {
-      this.SetWandState(filledWand);
+      this.SetWandState(filledWand.GetSprite());
       inventory.RemoveItems(State.WAND_EMPTY);
       inventory.AddItems(State.WAND_FILLED);
     }
 
-    public void HandleMugTaken(InventoryState emptyMug)
+    public void HandleMugTaken(Item emptyMug)
     {
       if (!CanTakeMug()) return;
-      this.SetDrinkState(emptyMug);
+      this.SetDrinkState(emptyMug.GetSprite());
       inventory.AddItems(State.EMPTY_MUG);
     }
 
-    public void HandleEspressoCreated(InventoryState espresso)
+    public void HandleEspressoCreated(Drink espresso)
     {
-      this.SetDrinkState(espresso);
+      this.SetDrink(espresso);
       inventory.RemoveItems(State.EMPTY_MUG, State.WAND_FILLED);
       inventory.AddItems(State.WAND_EMPTY, State.ESPRESSO);
     }
 
-    public void HandleAmericanoCreated(InventoryState americano)
+    public void HandleAmericanoCreated(Drink americano)
     {
-      this.SetDrinkState(americano);
+      this.SetDrink(americano);
       inventory.AddItems(State.AMERICANO);
       inventory.RemoveItems(State.CAPPUCCINO, State.ESPRESSO);
     }
 
-    public void HandleCappuccinoCreated(InventoryState cappuccino)
+    public void HandleCappuccinoCreated(Drink cappuccino)
     {
-      this.SetDrinkState(cappuccino);
+      this.SetDrink(cappuccino);
       inventory.AddItems(State.CAPPUCCINO);
       inventory.RemoveItems(State.AMERICANO, State.ESPRESSO);
     }

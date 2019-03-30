@@ -5,43 +5,31 @@ using Midnight.Core;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MachineSteamMilk : MonoBehaviour, IInteractable
+public class MachineSteamMilk : MonoBehaviour
 {
   [SerializeField] int holdDuration = 100;
   [SerializeField] GameEvent raisesEvent;
-  [SerializeField] Slider progress;
 
-  HoldAction action;
+  GameAction action;
+  PlayerController player;
 
   private void Start()
   {
-    progress.gameObject.SetActive(false);
-    action = GetComponent<HoldAction>();
+    action = GetComponent<GameAction>();
+    player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
   }
 
-  public void OnInteraction(PlayerController player)
+  public void OnInteraction()
   {
     if (player.CanMakeCappuccino())
     {
-      progress.gameObject.SetActive(true);
-      action.StartAction(HandleDone, HandleCancel, handleProgress, holdDuration);
+      action.StartAction(() => Input.GetButton("Jump"), holdDuration);
     }
   }
 
-  public void HandleDone(int durationHeld)
+  public void HandleDone()
   {
     raisesEvent.Raise();
-    progress.gameObject.SetActive(false);
 
-  }
-
-  public void HandleCancel(int durationHeld)
-  {
-    progress.gameObject.SetActive(false);
-  }
-
-  public void handleProgress(int durationHeld)
-  {
-    progress.value = (float)durationHeld / (float)holdDuration;
   }
 }

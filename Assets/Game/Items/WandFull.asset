@@ -9,7 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cde3a5f041e3e42b2b13949f5a7fb615, type: 3}
-  m_Name: EmptyMug
+  m_Script: {fileID: 11500000, guid: 2c38344ed4b8f49d6ad479d71d192ffa, type: 3}
+  m_Name: WandFull
   m_EditorClassIdentifier: 
-  stateName: MUG_EMPTY
+  itemName: Coffe Wand (full)
+  sprite: {fileID: 21300026, guid: 955f86b67a4e146538240da58d476306, type: 3}

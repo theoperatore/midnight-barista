@@ -5,44 +5,32 @@ using Midnight.Core;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MachineWater : MonoBehaviour, IInteractable
+public class MachineWater : MonoBehaviour
 {
   [SerializeField] int holdDuration = 25;
-  [SerializeField] Slider progress;
   [SerializeField] GameEvent raisesEvent;
 
-  HoldAction action;
+  GameAction action;
+  PlayerController player;
+
 
   // Start is called before the first frame update
   void Start()
   {
-    action = GetComponent<HoldAction>();
-    progress.gameObject.SetActive(false);
+    action = GetComponent<GameAction>();
+    player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
   }
 
-  public void OnInteraction(PlayerController player)
+  public void OnInteraction()
   {
     if (player.CanMakeAmericano())
     {
-      progress.gameObject.SetActive(true);
-      action.StartAction(HandleDone, HandleCancel, HandleProgress, holdDuration);
+      action.StartAction(() => Input.GetButton("Jump"), holdDuration);
     }
   }
 
-  void HandleDone(int duration)
+  public void HandleDone()
   {
-    progress.gameObject.SetActive(false);
     raisesEvent.Raise();
-  }
-
-  void HandleCancel(int duration)
-  {
-    progress.gameObject.SetActive(false);
-
-  }
-
-  void HandleProgress(int duration)
-  {
-    progress.value = (float)duration / (float)holdDuration;
   }
 }
