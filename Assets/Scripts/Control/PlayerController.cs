@@ -15,8 +15,8 @@ namespace Midnight.Control
     [SerializeField] Text profitText;
 
     int isEngagingHash = Animator.StringToHash("isEngaging");
+    Item craftedDrink;
     Animator animator;
-    Drink drink;
     Inventory inventory;
 
     Interactable interactable = null;
@@ -32,27 +32,19 @@ namespace Midnight.Control
       inventory = GetComponent<Inventory>();
     }
 
-    public void SetDrink(Drink createdDrink)
+    public void SetDrink(Item createdDrink)
     {
-      this.drink = createdDrink;
+      craftedDrink = createdDrink;
       this.SetDrinkState(createdDrink.GetSprite());
     }
 
     public void ServeDrink()
     {
-      if (!this.drink) return;
-
-      Drink d = this.drink;
-      this.drink = null;
       drinkImage.color = Color.black;
       drinkImage.sprite = null;
       inventory.RemoveItems(State.AMERICANO, State.CAPPUCCINO, State.ESPRESSO);
-      this.AddProfit(d.GetCost());
-    }
-
-    public bool IsHoldingDrink()
-    {
-      return this.drink != null;
+      this.AddProfit(craftedDrink.GetCost());
+      craftedDrink = null;
     }
 
     public void SetWandState(Item wand)
@@ -111,7 +103,7 @@ namespace Midnight.Control
     // conditional checks
     public bool CanTakeMug()
     {
-      return !inventory.HasItems(State.EMPTY_MUG) && !drink;
+      return !inventory.HasItems(State.EMPTY_MUG) && !craftedDrink;
     }
 
     public bool CanGrindCoffee()
@@ -155,21 +147,21 @@ namespace Midnight.Control
       inventory.AddItems(State.EMPTY_MUG);
     }
 
-    public void HandleEspressoCreated(Drink espresso)
+    public void HandleEspressoCreated(Item espresso)
     {
       this.SetDrink(espresso);
       inventory.RemoveItems(State.EMPTY_MUG, State.WAND_FILLED);
       inventory.AddItems(State.WAND_EMPTY, State.ESPRESSO);
     }
 
-    public void HandleAmericanoCreated(Drink americano)
+    public void HandleAmericanoCreated(Item americano)
     {
       this.SetDrink(americano);
       inventory.AddItems(State.AMERICANO);
       inventory.RemoveItems(State.CAPPUCCINO, State.ESPRESSO);
     }
 
-    public void HandleCappuccinoCreated(Drink cappuccino)
+    public void HandleCappuccinoCreated(Item cappuccino)
     {
       this.SetDrink(cappuccino);
       inventory.AddItems(State.CAPPUCCINO);

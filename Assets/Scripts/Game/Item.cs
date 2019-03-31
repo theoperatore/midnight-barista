@@ -8,6 +8,7 @@ namespace Midnight.Game
 
     [SerializeField] string itemName;
     [SerializeField] Sprite sprite;
+    [SerializeField] int cost = 0;
 
     public Sprite GetSprite()
     {
@@ -17,6 +18,11 @@ namespace Midnight.Game
     public string GetItemName()
     {
       return itemName;
+    }
+
+    public int GetCost()
+    {
+      return cost;
     }
 
   }

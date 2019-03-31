@@ -4412,6 +4412,39 @@ PrefabInstance:
       propertyPath: profitText
       value: 
       objectReference: {fileID: 1764225988}
+    - target: {fileID: 5462814630138095799, guid: 514d7fe99ae194dba91754e69ea1fd5d,
+        type: 3}
+      propertyPath: onEventRaised.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Midnight.Game.Item, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5462814630138095799, guid: 514d7fe99ae194dba91754e69ea1fd5d,
+        type: 3}
+      propertyPath: onEventRaised.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: 325f2fb01a3074746a87913755099ef6,
+        type: 2}
+    - target: {fileID: 5462814630138095797, guid: 514d7fe99ae194dba91754e69ea1fd5d,
+        type: 3}
+      propertyPath: onEventRaised.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Midnight.Game.Item, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5462814630138095797, guid: 514d7fe99ae194dba91754e69ea1fd5d,
+        type: 3}
+      propertyPath: onEventRaised.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: d5697d0a242cd49f289761a86a1f547d,
+        type: 2}
+    - target: {fileID: 5462814630138095798, guid: 514d7fe99ae194dba91754e69ea1fd5d,
+        type: 3}
+      propertyPath: onEventRaised.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Midnight.Game.Item, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5462814630138095798, guid: 514d7fe99ae194dba91754e69ea1fd5d,
+        type: 3}
+      propertyPath: onEventRaised.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: 97700da45a28c4e13879e8b0b4facf6f,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 514d7fe99ae194dba91754e69ea1fd5d, type: 3}
 --- !u!114 &5462814630138095795 stripped
